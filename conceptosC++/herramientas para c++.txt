@@ -1,0 +1,102 @@
+herramientas para c++:
+
+- std::vector = Son arreglos dinámicos. Usaremos uno para simular la memoria de la impresora y otro de tipo bool (verdadero/falso) para llevar el registro de qué documentos ya se imprimieron.
+
+- #include <iostream> = e ordena al compilador de C++ que incluya el archivo de cabecera de la biblioteca estándar para el manejo de flujos de entrada y salida (input/output stream).
+
+- #include <vector> = es una orden para el compilador que carga la biblioteca de vectores de la biblioteca estándar (STL), lo cual permite usar arreglos dinámicos que pueden cambiar de tamaño automáticamente mientras el programa corre.
+
+- #include <string> =  es una orden para el compilador que importa la biblioteca estándar de cadenas de texto (std::string), permitiéndote crear y manipular palabras, frases y oraciones.
+
+- #include <bits/stdc++.h> = es un archivo de cabecera no estándar del compilador GCC que incluye prácticamente todas las bibliotecas estándar del lenguaje de una sola vez
+
+- ios_base::sync_with_stdio(FALSE) = 
+
+	• Por defecto (true): C++ mantiene sus flujos (std::cin, std::cout) sincronizados con los flujos de C (stdin, stdout, stderr). Esto 	permite mezclar funciones como printf() y std::cout en el mismo código y ver los resultados en orden.
+
+	• Al desactivarla (false): Los flujos de C++ usan sus propios búferes independientes. Esto elimina la sobrecarga de mantener ambas 	bibliotecas en sintonía.
+
+- cint.tie(NULL) = se utiliza en C++ para desvincular los flujos de entrada (cin) y salida (cout), lo que acelera significativamente la velocidad de lectura de datos.
+	
+	Por defecto, cin y cout están "vinculados" (tied). Esto significa que justo antes de que el programa intente leer algo de la 	consola con cin, vacía automáticamente el búfer de cout (es decir, muestra en pantalla todo lo que esté pendiente).
+
+	Al escribir cin.tie(NULL);, rompes este vínculo. El programa ya no perderá tiempo asegurándose de que la pantalla esté actualizada 
+	antes de pedir datos, lo que mejora el rendimiento en la consola.
+
+- using namespace std = biblioteca estándar de C++ (como cout, cin o string).
+
+- void = significa "vacío" o "sin tipo", y se utiliza principalmente en tres situaciones:
+
+	• Función que no devuelve valor: Cuando se coloca antes del nombre de una función, indica que esta ejecuta un bloque de código 	pero no regresa ningún resultado a quien la llamó.
+
+	• Ejemplo: void saludar() { std::cout << "Hola"; }
+
+	• Función sin parámetros: Si se escribe void dentro de los paréntesis de una función, significa que no recibe ningún dato de 	entrada (por ejemplo: int obtenerNumero(void)).
+
+	• Punteros genéricos (void*): Un puntero de tipo void* es un puntero universal que puede apuntar a cualquier tipo de dato en 	memoria (como enteros, caracteres o estructuras), aunque no se puede leer directamente (desreferenciar) sin antes convertirlo al 	tipo adecuado.
+
+
+- No, ++i y i++ no cumplen exactamente la misma función, aunque ambos incrementan el valor de la variable i en 1. La diferencia principal radica en el momento en que se realiza dicho incremento dentro de una expresión.
+Aquí te explico la diferencia de forma sencilla:
+
+⚠️ La diferencia clave
+
+	• ++i (Pre-incremento): Primero incrementa el valor de la variable y luego 	devuelve el nuevo valor para ser usado en la expresión.
+
+	• i++ (Post-incremento): Primero devuelve el valor actual de la variable 	para ser usado en la expresión y luego incrementa la variable.
+
+-No, string y char no cumplen la misma función. Aunque ambos se usan para manejar texto en programación, representan conceptos y volúmenes de datos totalmente diferentes.
+
+Aquí tienes la diferencia clave de forma directa:
+
+	• char (carácter): Almacena un solo símbolo (una letra, un número, un 	espacio o un signo de puntuación). Se escribe entre comillas simples (ej. 	'a', '7', '#').
+
+	• string (cadena): Almacena un conjunto o secuencia de caracteres (un texto 	completo, una palabra o una frase). Se escribe entre comillas dobles (ej. 	"Hola", "Usuario_123").
+
+- .push_back = En C++, la instrucción .push_back(i); sirve para añadir el valor de 	la variable i al final de un vector (una lista dinámica de elementos).
+
+	¿Qué hace exactamente?
+
+	• Agrega el elemento: Toma el valor que tiene i y lo coloca en la última 	posición disponible del vector.
+
+	• Aumenta el tamaño automáticamente: Si el vector tenía 3 elementos, pasa a 	tener 4; si no hay memoria suficiente reservada, C++ se encarga de pedir más 	memoria de manera automática.
+
+- (!memoria.empty()) = El símbolo ! al principio es el operador lógico NOT (negación).
+
+	Por lo tanto, al combinarlos, !memoria.empty() se lee en tu mente como: "Si 	la memoria NO está vacía".
+
+- memoria.back() =  es una función de C++ que te devuelve el último elemento que está guardado en un vector o lista.
+
+En el contexto del problema de la impresora, nuestro vector memoria funcionaba como una pila de papeles. Lo que hace memoria.back() es mirar y entregarte el número del documento que está justo en la cima de esa pila (es decir, el que entró más recientemente mediante el comando '1').
+
+Un detalle clave de cómo funciona:
+memoria.back() solo lee el valor, pero no lo borra del contenedor. Por eso, en el código que revisamos, la secuencia siempre era de dos pasos:
+
+int ultimo_doc = memoria.back(); (Leemos cuál es el documento en la cima y lo guardamos).
+
+memoria.pop_back(); (Lo eliminamos definitivamente de la memoria para que ya no estorbe).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
